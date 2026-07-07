@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a0033, #3d0066);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    opacity: 0.7;
+    margin-bottom: 40px;
+}
+
+.listen-btn {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #a855f7, #6d28d9);
+    font-size: 3rem;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+    transition: transform 0.2s ease;
+}
+
+.listen-btn:hover {
+    transform: scale(1.05);
+}
+
+.listen-btn.listening {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 30px rgba(168, 85, 247, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+    }
+}
+
+.status {
+    margin-top: 24px;
+    font-size: 1.1rem;
+    opacity: 0.85;
+    min-height: 24px;
+}
+
+.result-card {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.result-card.hidden {
+    display: none;
+}
+
+.result-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.result-card p {
+    opacity: 0.8;
+    margin-top: 4px;
+}

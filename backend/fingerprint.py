@@ -82,7 +82,7 @@ def fingerprint_file(file_path):
 
 if __name__ == "__main__":
     # quick test
-    test_file = "test_song.mp3"  # put any mp3/wav in the same folder
+    test_file = "songs/Heavyweight Gurinder Gill (pagalall.com).mp3"
     hashes = fingerprint_file(test_file)
     print(f"Generated {len(hashes)} hashes")
     print("Sample hashes:", hashes[:5])

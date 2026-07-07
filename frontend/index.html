@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Shazam Clone</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎵 Song Identifier</h1>
+        <p class="subtitle">Tap the button and play some music</p>
+
+        <button id="listenBtn" class="listen-btn">
+            <span id="btnIcon">🎤</span>
+        </button>
+
+        <p id="status" class="status">Tap to start listening</p>
+
+        <div id="resultCard" class="result-card hidden">
+            <h2 id="resultTitle"></h2>
+            <p id="resultArtist"></p>
+            <p id="resultScore"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
