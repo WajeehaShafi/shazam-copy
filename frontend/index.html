@@ -3,25 +3,57 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Shazam Clone</title>
+    <title>Sonic — Song Identifier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="container">
-        <h1>🎵 Song Identifier</h1>
-        <p class="subtitle">Tap the button and play some music</p>
+    <div class="bg-glow"></div>
 
-        <button id="listenBtn" class="listen-btn">
-            <span id="btnIcon">🎤</span>
-        </button>
+    <div class="container">
+        <div class="brand">
+            <span class="brand-icon">🎧</span>
+            <h1>Sonic</h1>
+        </div>
+        <p class="subtitle">Tap to identify the song playing around you</p>
+
+        <div class="listen-wrapper">
+            <div class="ring ring1"></div>
+            <div class="ring ring2"></div>
+            <div class="ring ring3"></div>
+
+            <button id="listenBtn" class="listen-btn">
+                <svg id="micIcon" viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor"
+                    stroke-width="1.8">
+                    <path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z" />
+                    <path d="M19 10v1a7 7 0 0 1-14 0v-1" />
+                    <line x1="12" y1="19" x2="12" y2="23" />
+                    <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+
+                <div class="bars" id="bars">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </button>
+        </div>
 
         <p id="status" class="status">Tap to start listening</p>
 
         <div id="resultCard" class="result-card hidden">
-            <h2 id="resultTitle"></h2>
-            <p id="resultArtist"></p>
-            <p id="resultScore"></p>
+            <div class="vinyl">
+                <div class="vinyl-hole"></div>
+            </div>
+            <div class="result-info">
+                <span class="result-tag">MATCH FOUND</span>
+                <h2 id="resultTitle"></h2>
+                <p id="resultArtist"></p>
+                <div class="score-bar-track">
+                    <div id="scoreBar" class="score-bar-fill"></div>
+                </div>
+                <p id="resultScore" class="score-label"></p>
+            </div>
         </div>
     </div>
 

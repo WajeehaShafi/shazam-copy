@@ -1,12 +1,14 @@
 const BACKEND_URL = "http://127.0.0.1:8000/match";
-const CHUNK_DURATION_MS = 5000; // 5 seconds per rolling chunk
+const CHUNK_DURATION_MS = 5000;
 
 const listenBtn = document.getElementById("listenBtn");
+const listenWrapper = document.querySelector(".listen-wrapper");
 const statusEl = document.getElementById("status");
 const resultCard = document.getElementById("resultCard");
 const resultTitle = document.getElementById("resultTitle");
 const resultArtist = document.getElementById("resultArtist");
 const resultScore = document.getElementById("resultScore");
+const scoreBar = document.getElementById("scoreBar");
 
 let isListening = false;
 let mediaStream = null;
@@ -30,6 +32,7 @@ async function startListening() {
 
     isListening = true;
     listenBtn.classList.add("listening");
+    listenWrapper.classList.add("listening");
     resultCard.classList.add("hidden");
     statusEl.textContent = "Listening...";
 
@@ -39,6 +42,7 @@ async function startListening() {
 function stopListening() {
     isListening = false;
     listenBtn.classList.remove("listening");
+    listenWrapper.classList.remove("listening");
     statusEl.textContent = "Tap to start listening";
 
     if (mediaRecorder && mediaRecorder.state !== "inactive") {
@@ -63,7 +67,6 @@ function recordChunkLoop() {
         const blob = new Blob(chunks, { type: "audio/webm" });
         await sendChunkToServer(blob);
 
-        // If still listening (no confident match yet), record the next chunk
         if (isListening) {
             recordChunkLoop();
         }
@@ -103,7 +106,14 @@ async function sendChunkToServer(blob) {
 function showResult(data) {
     resultTitle.textContent = data.title;
     resultArtist.textContent = data.artist || "Unknown Artist";
-    resultScore.textContent = `Confidence score: ${data.score}`;
+    resultScore.textContent = `${data.score.toLocaleString()} points matched`;
     resultCard.classList.remove("hidden");
     statusEl.textContent = "Match found!";
+
+    // Animate confidence bar (capped visually at 100%)
+    const percent = Math.min(100, (data.score / 5000) * 100);
+    scoreBar.style.width = "0%";
+    setTimeout(() => {
+        scoreBar.style.width = `${percent}%`;
+    }, 100);
 }
