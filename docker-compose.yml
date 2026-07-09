@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    container_name: shazam-backend
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5500:80"
+    container_name: shazam-frontend
+    depends_on:
+      - backend
